@@ -1,16 +1,19 @@
 <template>
   <div class="screen-animation">
     <vue-space v-if="name === 'space'" />
+    <vue-tetris v-if="name === 'tetris'" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import VueSpace from "./space.vue";
+import VueTetris from "./tetris.vue";
 
 export default Vue.extend({
   components: {
-    VueSpace
+    VueSpace,
+    VueTetris
   },
   props: {
     name: {
