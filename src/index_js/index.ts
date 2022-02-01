@@ -1,7 +1,8 @@
 import Vue from "./components/stage.vue";
 
 export function start(
-  name: string
+  name: string,
+  options?: any
 ){
   const div = document.body
     .appendChild(document.createElement("div"));
@@ -21,6 +22,7 @@ export function start(
   }).$mount(div.appendChild(document.createElement("div")));
 
   vue.name = name;
+  vue.options = options;
   div.addEventListener("click", () => {
     div.innerHTML = "";
     div.style.display = "none";
