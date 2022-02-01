@@ -1,7 +1,7 @@
 <template>
   <div class="screen-animation">
-    <vue-space v-if="name === 'space'" />
-    <vue-tetris v-if="name === 'tetris'" />
+    <vue-space v-if="name === 'space'" :options="options" />
+    <vue-tetris v-if="name === 'tetris'" :options="options" />
   </div>
 </template>
 
@@ -19,6 +19,10 @@ export default Vue.extend({
     name: {
       type: String,
       default: ""
+    },
+    options: {
+      type: Object,
+      default: () => ({})
     }
   }
 });

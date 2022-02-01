@@ -20,22 +20,17 @@ class Rand {
   }
 }
 
-class YLimits {
-  protected cells: {x: number, y: number}[];
-  public yo: object;
-  constructor(cells: {x: number, y: number}){
+class Occupied {
+  protected cells: { x: number, y: number }[];
+  constructor(cells: {x: number, y: number}[]){
     this.cells = cells;
-    this.yo = Object.fromEntries(
-      this.cells.map(cell => [
-        cell.x,
-        this.cells.filter(c => c.x == cell.x)
-      ])
-    );
   }
-  public getY(x: number){
-    return x in this.yo ?
-      this.yo[x].sort((a,b) => a.y - b.y)[0].y :
-      undefined;
+  public includes(activeCells: {x: number, y: number}[]){
+    return activeCells.some(
+      activeCell => this.cells.some(
+        cell => cell.x === activeCell.x && cell.y === activeCell.y
+      )
+    );
   }
 }
 
@@ -46,13 +41,13 @@ class Tetrimino {
   public active: boolean;
   public degree: number;
   public color: string;
-  constructor(char: string, x: number, y: number, color: string){
+  constructor(char: string, x: number, y: number, color: string, degree: number){
     this.x = x;
     this.y = y;
     this.char = char;
     this.color = color;
     this.active = true;
-    this.degree = 0;
+    this.degree = degree;
   }
   public changeDegree(){
     this.degree = (this.degree + 90) % 360;
@@ -61,8 +56,8 @@ class Tetrimino {
 }
 
 class Tetrimino_I extends Tetrimino {
-  constructor(x: number, y: number){
-    super("I", x, y, "lightblue");
+  constructor(x: number, y: number, color: string){
+    super("I", x, y, color, 0);
   }
   public getCells(){
     return {
@@ -83,8 +78,8 @@ class Tetrimino_I extends Tetrimino {
 }
 
 class Tetrimino_O extends Tetrimino {
-  constructor(x: number, y: number){
-    super("O", x, y, "yellow");
+  constructor(x: number, y: number, color: string){
+    super("O", x, y, color, 0);
   }
   public getCells(){
     return [
@@ -97,8 +92,8 @@ class Tetrimino_O extends Tetrimino {
 }
 
 class Tetrimino_S extends Tetrimino {
-  constructor(x: number, y: number){
-    super("S", x, y, "green");
+  constructor(x: number, y: number, color: string){
+    super("S", x, y, color, 0);
   }
   public getCells(){
     return {
@@ -119,8 +114,8 @@ class Tetrimino_S extends Tetrimino {
 }
 
 class Tetrimino_Z extends Tetrimino {
-  constructor(x: number, y: number){
-    super("Z", x, y, "red");
+  constructor(x: number, y: number, color: string){
+    super("Z", x, y, color, 0);
   }
   public getCells(){
     return {
@@ -141,8 +136,8 @@ class Tetrimino_Z extends Tetrimino {
 }
 
 class Tetrimino_J extends Tetrimino {
-  constructor(x: number, y: number){
-    super("J", x, y, "blue");
+  constructor(x: number, y: number, color: string){
+    super("J", x, y, color, 0);
   }
   public getCells(){
     return {
@@ -175,8 +170,8 @@ class Tetrimino_J extends Tetrimino {
 }
 
 class Tetrimino_L extends Tetrimino {
-  constructor(x: number, y: number){
-    super("L", x, y, "orange");
+  constructor(x: number, y: number, color: string){
+    super("L", x, y, color, 0);
   }
   public getCells(){
     return {
@@ -209,8 +204,8 @@ class Tetrimino_L extends Tetrimino {
 }
 
 class Tetrimino_T extends Tetrimino {
-  constructor(x: number, y: number){
-    super("T", x, y, "purple");
+  constructor(x: number, y: number, color: string){
+    super("T", x, y, color, 0);
   }
   public getCells(){
     return {
@@ -243,6 +238,12 @@ class Tetrimino_T extends Tetrimino {
 }
 
 export default Vue.extend({
+  props: {
+    options: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data:function(){return {
     boardw:20,
     boardh:30,
@@ -255,21 +256,59 @@ export default Vue.extend({
     boardwidth(){return this.wh * this.boardw + "vmin";},
     boardheight(){return this.wh * this.boardh + "vmin";},
     cellwidth(){return this.wh+"vmin";},
-    cellheight(){return this.wh+"vmin";}
+    cellheight(){return this.wh+"vmin";},
+    colors(){
+      return {
+        i: "lightblue",
+        o: "yellow",
+        s: "green",
+        z: "red",
+        j: "blue",
+        l: "orange",
+        t: "purple",
+        ...this.options.colors
+      };
+    }
   },
   methods:{
     addTetrimino(){
       const tetriminoClasses = [
-        Tetrimino_I,
-        Tetrimino_O,
-        Tetrimino_S,
-        Tetrimino_Z,
-        Tetrimino_J,
-        Tetrimino_L,
-        Tetrimino_T
+        {
+          classConstructor: Tetrimino_I,
+          color: this.colors.i
+        },
+        {
+          classConstructor: Tetrimino_O,
+          color: this.colors.o
+        },
+        {
+          classConstructor: Tetrimino_S,
+          color: this.colors.s
+        },
+        {
+          classConstructor: Tetrimino_Z,
+          color: this.colors.z
+        },
+        {
+          classConstructor: Tetrimino_J,
+          color: this.colors.j
+        },
+        {
+          classConstructor: Tetrimino_L,
+          color: this.colors.l
+        },
+        {
+          classConstructor: Tetrimino_T,
+          color: this.colors.t
+        }
+      ];
+      const myClass = tetriminoClasses[
+        Rand.number(tetriminoClasses.length)
       ];
       this.tetriminos.push(
-        new tetriminoClasses[Rand.number(tetriminoClasses.length)](Rand.number(this.boardw - 2)+1, 0)
+        new myClass.classConstructor(
+          Rand.number(this.boardw - 2)+1, 0, myClass.color
+        )
       );
     },
     playGame(){
@@ -285,32 +324,34 @@ export default Vue.extend({
           .map(tetrimino => tetrimino.getCells())
           .flat();
 
-        const yLimits = new YLimits(currentcells);
+        const occupied = new Occupied(currentcells);
         let isGameOver = false;
         that.tetriminos.filter(function(tetrimino){return tetrimino.active;}).map(function(tetrimino){
           Rand.number(10) === 0 && tetrimino.changeDegree();
 
           if(Rand.number(10) === 0 && tetrimino.x + 2 < that.boardw){
             tetrimino.x += 1;
+            if(occupied.includes(tetrimino.getCells())){
+              tetrimino.x -= 1;
+            }
           }else if(Rand.number(10) === 0 && tetrimino.x > 2){
             tetrimino.x -= 1;
-          }
-          tetrimino.y += 1;
-          const tempcells = tetrimino.getCells();
-          const maxy = tempcells.sort(function(a,b){return b.y - a.y;})[0].y;
-          let overY = false;
-          const itsok = tempcells.filter(function(tempcell){
-            const topY = yLimits.getY(tempcell.x);
-            if(!topY){return false;}
-            overY = overY || tempcell.y + 1 > topY;
-            return tempcell.y + 1 >= topY;
-          }).length > 0;
-          if(overY){tetrimino.y -= 1;}
-          if(maxy >= that.boardh - 1 || itsok){
-            tetrimino.active = false;
-            if(maxy <= 1){
-              isGameOver = true;
+            if(occupied.includes(tetrimino.getCells())){
+              tetrimino.x += 1;
             }
+          }
+
+          tetrimino.y += 1;
+          if(occupied.includes(tetrimino.getCells())){
+            tetrimino.active = false;
+            tetrimino.y -= 1;
+          }
+          const maxy = tetrimino.getCells().sort(function(a,b){return b.y - a.y;})[0].y;
+          if(maxy >= that.boardh - 1){
+            tetrimino.active = false;
+          }
+          if(!tetrimino.active && maxy <= 1){
+            isGameOver = true;
           }
         });
         if(that.tetriminos.filter(tetrimino => tetrimino.active).length === 0){
