@@ -24,6 +24,7 @@ export function start(
   vue.name = name;
   vue.options = options;
   div.addEventListener("click", () => {
+    vue.end();
     div.innerHTML = "";
     div.style.display = "none";
   });

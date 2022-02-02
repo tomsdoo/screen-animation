@@ -73,9 +73,9 @@ class Star {
 }
 export default {
   props:{
-    bag:{
-      type:Object,
-      default:function(){return {};}
+    proceeding: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -129,6 +129,7 @@ export default {
       });
       this.stars = this.stars
         .filter(star => star.isAlive() && star.isInWindow());
+      if(!this.proceeding){return;}
       setTimeout(() => {
         that.proceed();
       }, 10);

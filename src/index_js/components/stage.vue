@@ -1,7 +1,7 @@
 <template>
   <div class="screen-animation">
-    <vue-space v-if="name === 'space'" :options="options" />
-    <vue-tetris v-if="name === 'tetris'" :options="options" />
+    <vue-space v-if="name === 'space'" :proceeding="proceeding" :options="options" />
+    <vue-tetris v-if="name === 'tetris'" :proceeding="proceeding" :options="options" />
   </div>
 </template>
 
@@ -23,6 +23,14 @@ export default Vue.extend({
     options: {
       type: Object,
       default: () => ({})
+    }
+  },
+  data: () => ({
+    proceeding: true
+  }),
+  methods: {
+    end(){
+      this.proceeding = false;
     }
   }
 });
