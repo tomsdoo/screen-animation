@@ -242,6 +242,10 @@ export default Vue.extend({
     options: {
       type: Object,
       default: () => ({})
+    },
+    proceeding: {
+      type: Boolean,
+      default: true
     }
   },
   data:function(){return {
@@ -319,6 +323,7 @@ export default Vue.extend({
       this.tetriminos = [];
 
       (function tempf(){
+        if(!that.proceeding){return;}
         const currentcells = that.tetriminos
           .filter(tetrimino => !tetrimino.active)
           .map(tetrimino => tetrimino.getCells())
