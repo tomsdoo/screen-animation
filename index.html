@@ -3,8 +3,8 @@
 <head>
   <script src="dist/js/index.js"></script>
   <script>
-    function start(name){
-      ScreenAnimation.start(name, {
+    function startTetris(){
+      ScreenAnimation.start("tetris", {
         colors: {
           i: "#bbccee",
           o: "#448866",
@@ -16,10 +16,19 @@
         }
       });
     }
+    function startSpace(){
+      ScreenAnimation.start("space");
+    }
+    function startLife(){
+      ScreenAnimation.start("life", {
+        color: "#ee66cc"
+      });
+    }
   </script>
 </head>
 <body>
-  <button onclick="start('space')">space</button>
-  <button onclick="start('tetris')">tetris</button>
+  <button onclick="startSpace()">space</button>
+  <button onclick="startTetris()">tetris</button>
+  <button onclick="startLife()">life</button>
 </body>
 </html>
