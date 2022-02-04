@@ -1,7 +1,15 @@
 <template>
-  <div class="stage">
-    <div class="myboard flex-grow-0 flex-shrink-0 d-flex flex-row flex-wrap">
-      <div v-for="cell in cells" class="card cell" :class='[cell.alive ? "alive" : ""]'>
+  <div
+    class="stage"
+    :style="{ backgroundColor: stageColor }"
+  >
+    <div class="myboard">
+      <div
+        v-for="cell in cells"
+        class="card cell"
+        :class='[cell.alive ? "alive" : ""]'
+        :style="{ backgroundColor: cell.alive ? cellColor : 'transparent' }"
+      >
       </div>
     </div>
   </div>
@@ -84,9 +92,21 @@ class Board {
 
 export default Vue.extend({
   props:{
+    options: {
+      type: Object,
+      default: () => ({})
+    },
     proceeding: {
       type: Boolean,
       default: true
+    }
+  },
+  computed: {
+    cellColor(){
+      return this.options.color || "#014347";
+    },
+    stageColor(){
+      return this.options.backgroundColor || "transparent";
     }
   },
   data:function(){return {
@@ -189,7 +209,7 @@ export default Vue.extend({
   border-radius: 0.2em;
 }
 .alive {
-  background-color:#014347;
+  abackground-color:#014347;
   color:#fff;
 }
 .myboard {
