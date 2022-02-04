@@ -21,14 +21,53 @@
     }
     function startLife(){
       ScreenAnimation.start("life", {
-        color: "#ee66cc"
+        color: "#77bb99",
+        backgroundColor: "rgba(0,0,0,0.6)"
       });
     }
   </script>
+  <style>
+  .wrapper {
+    background: #eeeeee;
+    width: 80vw;
+    height: 80vh;
+    margin: auto auto;
+    padding: 3rem;
+  }
+  .button-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+    list-style-type: none;
+    margin-block-start: unset;
+    margin-block-end: unset;
+    padding-inline-start: unset;
+  }
+  .button-list-item {
+  }
+  .button-list-item .button {
+    width: 100%;
+    height: 10rem;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+  }
+  .button-list-item .button:hover {
+    background: #dddddd;
+  }
+  </style>
 </head>
 <body>
-  <button onclick="startSpace()">space</button>
-  <button onclick="startTetris()">tetris</button>
-  <button onclick="startLife()">life</button>
+  <div class="wrapper">
+    <ul class="button-list">
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startSpace()">space</button>
+      </li>
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startTetris()">tetris</button>
+      </li>
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startLife()">life</button>
+      </li>
+    </ul>
+  </div>
 </body>
 </html>
