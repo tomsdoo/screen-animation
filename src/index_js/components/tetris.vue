@@ -1,5 +1,8 @@
 <template>
-  <div class="stage">
+  <div
+    class="stage"
+    :style="{ backgroundColor: stageColor }"
+  >
     <div class="board" :style='{width:boardwidth,height:boardheight}'>
       <div
         v-for="cell in cells"
@@ -272,6 +275,9 @@ export default Vue.extend({
         t: "purple",
         ...this.options.colors
       };
+    },
+    stageColor(){
+      return this.options.backgroundColor || "transparent";
     }
   },
   methods:{
