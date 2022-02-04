@@ -21,9 +21,14 @@
       ScreenAnimation.start("space");
     }
     function startLife(){
-      ScreenAnimation.start("life", {
+      const animation = ScreenAnimation.start("life", {
         color: "#77bb99",
-        backgroundColor: "rgba(0,0,0,0.6)"
+        backgroundColor: "rgba(0,0,0,0.6)",
+        closeOnClick: false
+      });
+      animation.addEventListener("click", () => {
+        console.log("ended");
+        animation.end();
       });
     }
   </script>

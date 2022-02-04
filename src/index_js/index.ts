@@ -21,11 +21,30 @@ export function start(
   const vue = new Vue({
   }).$mount(div.appendChild(document.createElement("div")));
 
+  const innerOptions = {
+    closeOnClick: true,
+    ...(options ? options : {})
+  };
+
   vue.name = name;
-  vue.options = options;
-  div.addEventListener("click", () => {
-    vue.end();
-    div.innerHTML = "";
-    div.style.display = "none";
-  });
+  vue.options = innerOptions;
+
+  if(innerOptions.closeOnClick){
+    div.addEventListener("click", () => {
+      vue.end();
+      div.innerHTML = "";
+      div.style.display = "none";
+    });
+  }
+  return {
+    addEventListener(eventName: string, handler: Function){
+      // @ts-ignore
+      div.addEventListener(eventName, handler);
+    },
+    end(){
+      vue.end();
+      div.innerHTML = "";
+      div.style.display = "none";
+    }
+  };
 }
