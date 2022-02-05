@@ -12,26 +12,13 @@ import Vue from "vue";
 import {Ticker} from "@createjs/core";
 import {Shape, Stage } from "@createjs/easeljs";
 import {Tween} from "@createjs/tweenjs";
+import { Tags } from "../../modules/";
 const createjs = {
   Shape:Shape,
   Stage:Stage,
   Tween:Tween,
   Ticker:Ticker
 };
-class Tags {
-  public static create(tagName: string, attr?: any, style?: any){
-    const ret = document.createElement(tagName);
-    Object.entries(attr || {})
-      .forEach(([key,value]) => {
-        ret.setAttribute(key, value);
-      });
-    Object.entries(style || {})
-      .forEach(([key,value]) => {
-        ret.style[key] = value;
-      });
-    return ret;
-  }
-}
 
 export default Vue.extend({
   props:{
@@ -75,28 +62,18 @@ export default Vue.extend({
     const that = this;
     const canv = this.$refs.myarea
       .appendChild(
-        Tags.create(
-          "canvas",
-          {
-            width:window.innerWidth,
-            height:window.innerHeight
-          }
-        )
+        Tags.canvas({
+          width:window.innerWidth,
+          height:window.innerHeight
+        })
       );
     const stage = new createjs.Stage(canv);
     const altcanv = document.body
       .appendChild(
-        Tags.create(
-          "div",
-          {},
-          {
-            display:"none"
-          }
-        )
+        Tags.div({},{ display: "none" })
       )
       .appendChild(
-        Tags.create(
-          "canvas",
+        Tags.canvas(
           {
             width:window.innerWidth,
             height:window.innerHeight
