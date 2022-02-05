@@ -31,6 +31,15 @@
         animation.end();
       });
     }
+    function startMessage(){
+      ScreenAnimation.start("message", {
+        color: "#7744bb",
+        backgroundColor: "rgba(0,0,0,0.4)",
+        fontFamily: "fantasy",
+        fontSize: "5rem",
+        text: "testing.."
+      });
+    }
   </script>
   <style>
   .wrapper {
@@ -72,6 +81,9 @@
       </li>
       <li class="button-list-item">
         <button type="button" class="button" onclick="startLife()">life</button>
+      </li>
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startMessage()">message</button>
       </li>
     </ul>
   </div>
