@@ -40,6 +40,12 @@
         text: "testing.."
       });
     }
+    function startRails(){
+      ScreenAnimation.start("rails", {
+        color: "#993388",
+        backgroundColor: "rgba(0,0,0,0.5)"
+      });
+    }
   </script>
   <style>
   .wrapper {
@@ -74,16 +80,19 @@
   <div class="wrapper">
     <ul class="button-list">
       <li class="button-list-item">
-        <button type="button" class="button" onclick="startSpace()">space</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startTetris()">tetris</button>
-      </li>
-      <li class="button-list-item">
         <button type="button" class="button" onclick="startLife()">life</button>
       </li>
       <li class="button-list-item">
         <button type="button" class="button" onclick="startMessage()">message</button>
+      </li>
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startRails()">rails</button>
+      </li>
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startSpace()">space</button>
+      </li>
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startTetris()">tetris</button>
       </li>
     </ul>
   </div>
