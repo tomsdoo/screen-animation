@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
+import Vue from "vue";
 import {Ticker} from "@createjs/core";
 import {Shape, Stage } from "@createjs/easeljs";
 import {Tween} from "@createjs/tweenjs";
-// import Tags from "@tomsd/tags.js";
 const createjs = {
   Shape:Shape,
   Stage:Stage,
@@ -32,8 +32,8 @@ class Tags {
     return ret;
   }
 }
-// import serial from "@tomsd/serial";
-export default {
+
+export default Vue.extend({
   props:{
     options: {
       type: Object,
@@ -171,15 +171,8 @@ export default {
     function myupdate(){stage.update();}
     this.updateStage = myupdate;
     createjs.Ticker.addEventListener("tick", myupdate);
-    // setTimeout(fin,30000);
-    function fin(){
-      try{
-        createjs.Ticker.removeEventListener("tick",myupdate);
-      }catch(e){}
-      that.$emit("fin");
-    }
   }
-};
+});
 </script>
 
 <style scoped>
