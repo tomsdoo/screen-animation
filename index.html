@@ -3,6 +3,12 @@
 <head>
   <script src="dist/js/index.js"></script>
   <script>
+    function startAvalanche(){
+      ScreenAnimation.start("avalanche", {
+        color: "#ff7722",
+        backgroundColor: "rgba(255,255,255,0.8)"
+      });
+    }
     function startTetris(){
       ScreenAnimation.start("tetris", {
         colors: {
@@ -85,6 +91,9 @@
 <body>
   <div class="wrapper">
     <ul class="button-list">
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startAvalanche()">avalanche</button>
+      </li>
       <li class="button-list-item">
         <button type="button" class="button" onclick="startLife()">life</button>
       </li>
