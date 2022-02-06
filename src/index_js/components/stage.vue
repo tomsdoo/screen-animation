@@ -1,5 +1,6 @@
 <template>
   <div class="screen-animation">
+    <vue-avalanche v-if="name === 'avalanche'" :proceeding="proceeding" :options="options" />
     <vue-life v-if="name === 'life'" :proceeding="proceeding" :options="options" />
     <vue-line v-if="name === 'line'" :proceeding="proceeding" :options="options" />
     <vue-message v-if="name === 'message'" :proceeding="proceeding" :options="options" />
@@ -11,6 +12,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import VueAvalanche from "./avalanche.vue";
 import VueLife from "./life.vue";
 import VueLine from "./line.vue";
 import VueMessage from "./message.vue";
@@ -20,6 +22,7 @@ import VueTetris from "./tetris.vue";
 
 export default Vue.extend({
   components: {
+    VueAvalanche,
     VueLife,
     VueLine,
     VueMessage,
