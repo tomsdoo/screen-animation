@@ -26,6 +26,11 @@
     function startSpace(){
       ScreenAnimation.start("space");
     }
+    function startStar(){
+      ScreenAnimation.start("star", {
+        backgroundColor: "rgba(0,0,0,0.8)"
+      });
+    }
     function startLife(){
       const animation = ScreenAnimation.start("life", {
         color: "#77bb99",
@@ -108,6 +113,9 @@
       </li>
       <li class="button-list-item">
         <button type="button" class="button" onclick="startSpace()">space</button>
+      </li>
+      <li class="button-list-item">
+        <button type="button" class="button" onclick="startStar()">star</button>
       </li>
       <li class="button-list-item">
         <button type="button" class="button" onclick="startTetris()">tetris</button>
