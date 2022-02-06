@@ -6,6 +6,7 @@
     <vue-message v-if="name === 'message'" :proceeding="proceeding" :options="options" />
     <vue-rails v-if="name === 'rails'" :proceeding="proceeding" :options="options" />
     <vue-space v-if="name === 'space'" :proceeding="proceeding" :options="options" />
+    <vue-star v-if="name === 'star'" :proceeding="proceeding" :options="options" />
     <vue-tetris v-if="name === 'tetris'" :proceeding="proceeding" :options="options" />
   </div>
 </template>
@@ -18,6 +19,7 @@ import VueLine from "./line.vue";
 import VueMessage from "./message.vue";
 import VueRails from "./rails.vue";
 import VueSpace from "./space.vue";
+import VueStar from "./star.vue";
 import VueTetris from "./tetris.vue";
 
 export default Vue.extend({
@@ -28,6 +30,7 @@ export default Vue.extend({
     VueMessage,
     VueRails,
     VueSpace,
+    VueStar,
     VueTetris
   },
   props: {
