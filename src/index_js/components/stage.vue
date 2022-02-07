@@ -4,6 +4,7 @@
     <vue-life v-if="name === 'life'" :proceeding="proceeding" :options="options" />
     <vue-line v-if="name === 'line'" :proceeding="proceeding" :options="options" />
     <vue-message v-if="name === 'message'" :proceeding="proceeding" :options="options" />
+    <vue-puzzle v-if="name === 'puzzle'" :proceeding="proceeding" :options="options" />
     <vue-rails v-if="name === 'rails'" :proceeding="proceeding" :options="options" />
     <vue-space v-if="name === 'space'" :proceeding="proceeding" :options="options" />
     <vue-star v-if="name === 'star'" :proceeding="proceeding" :options="options" />
@@ -17,6 +18,7 @@ import VueAvalanche from "./avalanche.vue";
 import VueLife from "./life.vue";
 import VueLine from "./line.vue";
 import VueMessage from "./message.vue";
+import VuePuzzle from "./puzzle.vue";
 import VueRails from "./rails.vue";
 import VueSpace from "./space.vue";
 import VueStar from "./star.vue";
@@ -28,6 +30,7 @@ export default Vue.extend({
     VueLife,
     VueLine,
     VueMessage,
+    VuePuzzle,
     VueRails,
     VueSpace,
     VueStar,
