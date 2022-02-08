@@ -12,7 +12,7 @@ import Vue from "vue";
 import {Ticker} from "@createjs/core";
 import {Shape, Stage } from "@createjs/easeljs";
 import {Tween} from "@createjs/tweenjs";
-import { Tags } from "../../modules/";
+import { Rand, Tags } from "../../modules/";
 const createjs = {
   Shape:Shape,
   Stage:Stage,
@@ -26,12 +26,6 @@ const LINE_DIRECTIONS = {
   DOWN: "down",
   LEFT: "left"
 };
-
-class Rand {
-  public static choose<T>(parr: T[]){
-    return parr[Math.floor(Math.random() * parr.length)];
-  }
-}
 
 export default Vue.extend({
   props:{
