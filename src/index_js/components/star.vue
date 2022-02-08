@@ -35,21 +35,13 @@
 import {Ticker} from "@createjs/core";
 import {Shape, Stage } from "@createjs/easeljs";
 import {Tween} from "@createjs/tweenjs";
-import { Tags } from "../../modules/";
+import { Rand, Tags } from "../../modules/";
 const createjs = {
   Shape:Shape,
   Stage:Stage,
   Tween:Tween,
   Ticker:Ticker
 };
-class Rand {
-  public static number(underOf: number){
-    return Math.floor(Math.random() * underOf);
-  }
-  public static color(){
-    return `hsl(${Rand.number(360)}, 50%, 70%)`;
-  }
-}
 export default {
   props:{
     options: {
