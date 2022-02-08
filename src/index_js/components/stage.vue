@@ -1,14 +1,10 @@
 <template>
   <div class="screen-animation">
-    <vue-avalanche v-if="name === 'avalanche'" :proceeding="proceeding" :options="options" />
-    <vue-life v-if="name === 'life'" :proceeding="proceeding" :options="options" />
-    <vue-line v-if="name === 'line'" :proceeding="proceeding" :options="options" />
-    <vue-message v-if="name === 'message'" :proceeding="proceeding" :options="options" />
-    <vue-puzzle v-if="name === 'puzzle'" :proceeding="proceeding" :options="options" />
-    <vue-rails v-if="name === 'rails'" :proceeding="proceeding" :options="options" />
-    <vue-space v-if="name === 'space'" :proceeding="proceeding" :options="options" />
-    <vue-star v-if="name === 'star'" :proceeding="proceeding" :options="options" />
-    <vue-tetris v-if="name === 'tetris'" :proceeding="proceeding" :options="options" />
+    <component
+      :is="vueName"
+      :proceeding="proceeding"
+      :options="options"
+    />
   </div>
 </template>
 
@@ -44,6 +40,21 @@ export default Vue.extend({
     options: {
       type: Object,
       default: () => ({})
+    }
+  },
+  computed: {
+    vueName(){
+      return {
+        avalanche: "vue-avalanche",
+        life: "vue-life",
+        line: "vue-line",
+        message: "vue-message",
+        puzzle: "vue-puzzle",
+        rails: "vue-rails",
+        space: "vue-space",
+        star: "vue-star",
+        tetris: "vue-tetris"
+      }[this.name];
     }
   },
   data: () => ({
