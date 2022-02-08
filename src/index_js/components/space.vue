@@ -8,11 +8,7 @@
 </template>
 
 <script lang="ts">
-class Rand {
-  public static number(underOf: number){
-    return Math.floor(Math.random() * underOf);
-  }
-}
+import { Rand } from "../../modules/";
 function plus(a: number, b: number){return a + b;}
 function minus(a: number, b: number){return a - b;}
 type StarSeed = {
