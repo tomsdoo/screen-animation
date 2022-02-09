@@ -3,14 +3,12 @@
 <head>
   <script src="dist/js/index.js"></script>
   <script>
-    function startAvalanche(){
-      ScreenAnimation.start("avalanche", {
+    const definitions = {
+      avalanche: () => ScreenAnimation.start("avalanche", {
         color: "#ff7722",
         backgroundColor: "rgba(255,255,255,0.8)"
-      });
-    }
-    function startTetris(){
-      ScreenAnimation.start("tetris", {
+      }),
+      tetris: () => ScreenAnimation.start("tetris", {
         colors: {
           i: "#bbccee",
           o: "#448866",
@@ -21,54 +19,72 @@
           t: "#229944"
         },
         backgroundColor: "rgba(0,0,0,0.4)"
-      });
-    }
-    function startSpace(){
-      ScreenAnimation.start("space");
-    }
-    function startStar(){
-      ScreenAnimation.start("star", {
+      }),
+      space: () => ScreenAnimation.start("space"),
+      star: () => ScreenAnimation.start("star", {
         backgroundColor: "rgba(0,0,0,0.8)"
-      });
-    }
-    function startLife(){
-      const animation = ScreenAnimation.start("life", {
-        color: "#77bb99",
-        backgroundColor: "rgba(0,0,0,0.6)",
-        closeOnClick: false
-      });
-      animation.addEventListener("click", () => {
-        console.log("ended");
-        animation.end();
-      });
-    }
-    function startLine(){
-      ScreenAnimation.start("line", {
+      }),
+      life: () => {
+        const animation = ScreenAnimation.start("life", {
+          color: "#77bb99",
+          backgroundColor: "rgba(0,0,0,0.6)",
+          closeOnClick: false
+        });
+        animation.addEventListener("click", () => {
+          console.log("ended");
+          animation.end();
+        });
+      },
+      line: () => ScreenAnimation.start("line", {
         color: "#5588cc",
         backgroundColor: "rgba(0,0,0,0.8)"
-      });
-    }
-    function startMessage(){
-      ScreenAnimation.start("message", {
+      }),
+      message: () => ScreenAnimation.start("message", {
         color: "#7744bb",
         backgroundColor: "rgba(0,0,0,0.4)",
         fontFamily: "fantasy",
         fontSize: "5rem",
         text: "testing.."
-      });
-    }
-    function startPuzzle(){
-      ScreenAnimation.start("puzzle", {
+      }),
+      puzzle: () => ScreenAnimation.start("puzzle", {
         // color: "#883366",
         backgroundColor: "rgba(0,0,0,0.5)"
-      });
-    }
-    function startRails(){
-      ScreenAnimation.start("rails", {
+      }),
+      rails: () => ScreenAnimation.start("rails", {
         color: "#993388",
         backgroundColor: "rgba(0,0,0,0.5)"
+      })
+    };
+
+    window.addEventListener("load", () => {
+      function createTag(tag, attributes, styles){
+        const ret = document.createElement(tag);
+        Object.entries(attributes || {})
+          .forEach(([key,value]) => {
+            ret.setAttribute(key, value);
+          });
+        Object.entries(styles || {})
+          .forEach(([key,value]) => {
+            ret.style[key] = value;
+          });
+        return ret;
+      }
+      const buttonList = document.querySelector(".button-list");
+      Object.entries(definitions)
+        .sort((a,b) => a[0] > b[0] ? 1 : -1)
+        .forEach(([key,value]) => {
+          const li = buttonList
+            .appendChild(createTag("li", {
+              class: "button-list-item"
+            }));
+          const button = li.appendChild(createTag("button", {
+            type: "button",
+            class: "button"
+          }));
+        button.innerHTML = key;
+        button.addEventListener("click", value);
       });
-    }
+    });
   </script>
   <style>
   .wrapper {
@@ -102,33 +118,9 @@
 <body>
   <div class="wrapper">
     <ul class="button-list">
-      <li class="button-list-item">
+      <!-- <li class="button-list-item">
         <button type="button" class="button" onclick="startAvalanche()">avalanche</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startLife()">life</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startLine()">line</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startMessage()">message</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startPuzzle()">puzzle</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startRails()">rails</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startSpace()">space</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startStar()">star</button>
-      </li>
-      <li class="button-list-item">
-        <button type="button" class="button" onclick="startTetris()">tetris</button>
-      </li>
+      </li> -->
     </ul>
   </div>
 </body>
