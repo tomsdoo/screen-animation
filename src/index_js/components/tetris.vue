@@ -16,12 +16,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-
-class Rand {
-  public static number(underOf: number){
-    return Math.floor(Math.random() * underOf);
-  }
-}
+import { Rand } from "../../modules/";
 
 class Occupied {
   protected cells: { x: number, y: number }[];
