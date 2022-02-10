@@ -15,6 +15,7 @@ import VueLife from "./life.vue";
 import VueLine from "./line.vue";
 import VueMessage from "./message.vue";
 import VuePuzzle from "./puzzle.vue";
+import VueSea from "./sea.vue";
 import VueRails from "./rails.vue";
 import VueSpace from "./space.vue";
 import VueSparkler from "./sparkler.vue";
@@ -29,6 +30,7 @@ export default Vue.extend({
     VueMessage,
     VuePuzzle,
     VueRails,
+    VueSea,
     VueSpace,
     VueSparkler,
     VueStar,
@@ -53,6 +55,7 @@ export default Vue.extend({
         message: "vue-message",
         puzzle: "vue-puzzle",
         rails: "vue-rails",
+        sea: "vue-sea",
         space: "vue-space",
         sparkler: "vue-sparkler",
         star: "vue-star",
