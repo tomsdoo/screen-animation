@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Rand } from "../../modules/";
+import { Rand, Serial } from "../../modules/";
 
 class MortalBase {
   public x: number;
@@ -118,35 +118,49 @@ export default Vue.extend({
       default: true
     }
   },
-  data:function(){return {
+  data: () => ({
     circles:[],
     fish:[]
-  };},
-  methods:{},
-  created(){
-    const that = this;
-    that.circles = [...Array(3).keys()].map(i => Bubble.createRandom());
-    (function tempf(){
-      if(Rand.number(10) === 0){
-        that.circles = that.circles.concat([...Array(2).keys()].map(i => Bubble.createRandom()));
-      }
-      if(Rand.number(10) === 0){
-        that.fish = that.fish.concat([...Array(2).keys()].map(i => Fish.createRandom()));
-      }
-      that.circles = that.circles.map(circle => circle.getAge());
-      that.fish = that.fish.map(afish => afish.getAge());
+  }),
+  methods: {
+    addBubbles(){
+      this.circles = this.circles.concat(
+        Serial.number(2).map(i => Bubble.createRandom())
+      );
+    },
+    addFish(){
+      this.fish = this.fish.concat(
+        Serial.number(2).map(i => Fish.createRandom())
+      );
+    },
+    getAge(){
+      Rand.number(10) === 0 && this.addBubbles();
+      Rand.number(10) === 0 && this.addFish();
 
-      that.circles = that.circles.filter(function(circle){
-        return circle.y > 0 || Math.floor(Math.random() * 5) === 0;
-      });
-      that.fish = that.fish.filter(function(afish){
-        return afish.life > 0;
-        return afish.x < 0 || afish.x >= window.innerWidth || Math.floor(Math.random() * 5) === 0;
-      });
-      if(that.proceeding){
-        setTimeout(function(){tempf();}, 10);
+      this.circles = this.circles
+        .map(circle => circle.getAge());
+
+      this.fish = this.fish
+        .map(afish => afish.getAge());
+
+      this.circles = this.circles.filter(
+        circle => circle.y > 0 ||
+          Math.floor(Math.random() * 5) === 0
+      );
+
+      this.fish = this.fish.filter(afish => afish.life > 0);
+    }
+  },
+  created(){
+    this.circles = Serial.number(3)
+      .map(i => Bubble.createRandom());
+
+    (function tempf(){
+      this.getAge();
+      if(this.proceeding){
+        setTimeout(() => tempf.call(this), 10);
       }
-    })();
+    }).call(this);
   }
 });
 </script>
