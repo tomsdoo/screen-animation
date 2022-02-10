@@ -16,7 +16,7 @@
 
 <script>
 import Vue from "vue";
-import { Tags } from "../../modules/";
+import { Serial, Tags } from "../../modules/";
 export default Vue.extend({
   props:{
     options: {
@@ -39,7 +39,7 @@ export default Vue.extend({
   data:() => ({
     cells:[],
     cellxy:{},
-    colors: [...Array(5).keys()].map(i => "transparent"),
+    colors: Serial.number(5).map(i => "transparent"),
     table:{x:0,y:0},
     snowfalls:{}
   }),
@@ -64,7 +64,7 @@ export default Vue.extend({
 
       that.table.x = 30;
       that.table.y = 30;
-      that.cells = [...Array(that.table.x * that.table.y).keys()].map((i) => {
+      that.cells = Serial.number(that.table.x * that.table.y).map((i) => {
         const mycell = {
           i,
           x: i % that.table.x,
@@ -104,7 +104,7 @@ export default Vue.extend({
         };
         return ncell;
       });
-      [...Array(10).keys()].forEach(() => {
+      Serial.number(10).forEach(() => {
         const tempx = Math.floor(Math.random() * that.table.x);
         const tempy = Math.floor(Math.random() * that.table.y);
         if(!(tempx in nextsnowfalls)){nextsnowfalls[tempx] = {};}
