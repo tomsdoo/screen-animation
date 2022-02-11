@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Rand } from "../../modules/";
+import { Rand, Serial } from "../../modules/";
 
 class Occupied {
   protected cells: { x: number, y: number }[];
@@ -317,7 +317,7 @@ export default Vue.extend({
     },
     playGame(){
       const that = this;
-      this.cells = [...Array(this.boardw * this.boardh).keys()]
+      this.cells = Serial.number(this.boardw * this.boardh)
         .map(() => {color:"transparent"});
 
       this.tetriminos = [];
@@ -362,7 +362,7 @@ export default Vue.extend({
         if(that.tetriminos.filter(tetrimino => tetrimino.active).length === 0){
           that.addTetrimino();
         }
-        const ncells = [...Array(that.boardw * that.boardh).keys()].map(() => ({
+        const ncells = Serial.number(that.boardw * that.boardh).map(() => ({
           color: "transparent"
         }));
         that.tetriminos.forEach(tetrimino => {
@@ -388,7 +388,7 @@ export default Vue.extend({
               setTimeout(() => that.playGame(), 1000);
               return;
             }
-            [...Array(Rand.number(10)).keys()].forEach(i => {
+            Serial.number(Rand.number(10)).forEach(i => {
               cells[Rand.number(cells.length)].classList.add("collapse");
             });
             setTimeout(() => tempf(), interval);
