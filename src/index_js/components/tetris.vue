@@ -361,11 +361,14 @@ export default Vue.extend({
             isGameOver = true;
           }
         });
-        !that.tetriminos.find(tetrimino => tetrimino.active) && that.addTetrimino();
 
-        const ncells = Serial.number(that.boardw * that.boardh).map(() => ({
-          color: "transparent"
-        }));
+        !that.tetriminos.find(tetrimino => tetrimino.active) &&
+          that.addTetrimino();
+
+        const ncells = Serial.number(that.boardw * that.boardh)
+          .map(() => ({
+            color: "transparent"
+          }));
         that.tetriminos.forEach(tetrimino => {
           tetrimino.getCells().forEach(cell => {
             const idx = cell.y * that.boardw + cell.x;
