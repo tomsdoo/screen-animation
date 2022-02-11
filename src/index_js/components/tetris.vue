@@ -53,6 +53,9 @@ class Tetrimino {
   public addX(delta: number){
     this.x += delta;
   }
+  public addY(delta: number){
+    this.y += delta;
+  }
   abstract getCells(): { x: number; y: number; }[]
 }
 
@@ -352,10 +355,10 @@ export default Vue.extend({
               tetrimino.addX(1);
           }
 
-          tetrimino.y += 1;
+          tetrimino.addY(1);
           if(occupied.includes(tetrimino.getCells())){
             tetrimino.active = false;
-            tetrimino.y -= 1;
+            tetrimino.addY(-1);
           }
           const maxy = tetrimino.getCells().sort(function(a,b){return b.y - a.y;})[0].y;
           if(maxy >= that.boardh - 1){
