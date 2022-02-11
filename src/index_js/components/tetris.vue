@@ -360,7 +360,8 @@ export default Vue.extend({
             tetrimino.active = false;
             tetrimino.addY(-1);
           }
-          const maxy = tetrimino.getCells().sort(function(a,b){return b.y - a.y;})[0].y;
+          const maxy = tetrimino.getCells()
+            .sort((a,b) => b.y - a.y)[0].y;
           if(maxy >= that.boardh - 1){
             tetrimino.active = false;
           }
