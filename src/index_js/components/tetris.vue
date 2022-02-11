@@ -50,6 +50,9 @@ class Tetrimino {
   public changeDegree(){
     this.degree = (this.degree + 90) % 360;
   }
+  public addX(delta: number){
+    this.x += delta;
+  }
   abstract getCells(): { x: number; y: number; }[]
 }
 
@@ -336,16 +339,17 @@ export default Vue.extend({
         that.tetriminos.filter(tetrimino => tetrimino.active).map(tetrimino => {
           Rand.number(10) === 0 && tetrimino.changeDegree();
 
-          if(Rand.number(10) === 0 && tetrimino.x + 2 < that.boardw){
-            tetrimino.x += 1;
-            if(occupied.includes(tetrimino.getCells())){
-              tetrimino.x -= 1;
-            }
+          if(
+            Rand.number(10) === 0 &&
+            tetrimino.x + 2 < that.boardw
+          ){
+            tetrimino.addX(1);
+            occupied.includes(tetrimino.getCells()) &&
+              tetrimino.addX(-1);
           }else if(Rand.number(10) === 0 && tetrimino.x > 2){
-            tetrimino.x -= 1;
-            if(occupied.includes(tetrimino.getCells())){
-              tetrimino.x += 1;
-            }
+            tetrimino.addX(-1);
+            occupied.includes(tetrimino.getCells()) &&
+              tetrimino.addX(1);
           }
 
           tetrimino.y += 1;
