@@ -311,7 +311,9 @@ export default Vue.extend({
       ];
       this.tetriminos.push(
         new myClass.classConstructor(
-          Rand.number(this.boardw - 2)+1, 0, myClass.color
+          Rand.number(this.boardw - 2)+1,
+          0,
+          myClass.color
         )
       );
     },
