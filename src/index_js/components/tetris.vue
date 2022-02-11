@@ -392,14 +392,14 @@ export default Vue.extend({
                   !cell.classList.contains("collapse")
               );
             if(cells.length === 0){
-              setTimeout(() => that.playGame(), 1000);
+              setTimeout(() => this.playGame(), 1000);
               return;
             }
             Serial.number(Rand.number(10)).forEach(i => {
               cells[Rand.number(cells.length)].classList.add("collapse");
             });
-            setTimeout(() => tempf(), interval);
-          })();
+            setTimeout(() => tempf.call(this), interval);
+          }).call(that);
           that.$emit("fin");
         }
       })();
