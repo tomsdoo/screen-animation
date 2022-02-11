@@ -376,7 +376,7 @@ export default Vue.extend({
         });
         that.cells = ncells;
         if(that.proceeding && !isGameOver){
-          setTimeout(function(){tempf();},3);
+          setTimeout(tempf,3);
         }else{
           let interval = 25;
           setTimeout(() => {interval = 10;}, 300);
