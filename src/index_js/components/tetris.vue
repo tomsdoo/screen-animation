@@ -361,9 +361,8 @@ export default Vue.extend({
             isGameOver = true;
           }
         });
-        if(that.tetriminos.filter(tetrimino => tetrimino.active).length === 0){
-          that.addTetrimino();
-        }
+        !that.tetriminos.find(tetrimino => tetrimino.active) && that.addTetrimino();
+
         const ncells = Serial.number(that.boardw * that.boardh).map(() => ({
           color: "transparent"
         }));
