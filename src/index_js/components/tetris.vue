@@ -365,9 +365,8 @@ export default Vue.extend({
           if(maxy >= that.boardh - 1){
             tetrimino.active = false;
           }
-          if(!tetrimino.active && maxy <= 1){
-            isGameOver = true;
-          }
+          !tetrimino.active && maxy <= 1 &&
+              (() => {isGameOver = true;}).call();
         });
 
         !that.tetriminos.find(tetrimino => tetrimino.active) &&
