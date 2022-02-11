@@ -333,7 +333,7 @@ export default Vue.extend({
 
         const occupied = new Occupied(currentcells);
         let isGameOver = false;
-        that.tetriminos.filter(function(tetrimino){return tetrimino.active;}).map(function(tetrimino){
+        that.tetriminos.filter(tetrimino => tetrimino.active).map(function(tetrimino){
           Rand.number(10) === 0 && tetrimino.changeDegree();
 
           if(Rand.number(10) === 0 && tetrimino.x + 2 < that.boardw){
