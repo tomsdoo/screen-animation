@@ -384,8 +384,13 @@ export default Vue.extend({
           setTimeout(() => {interval = 5;}, 800);
           setTimeout(() => {interval = 2;}, 1200);
           (function tempf(){
-            const cells = Array.from(document.querySelectorAll(".stage .board .cell"))
-              .filter(cell => cell.classList.contains("painted") && !cell.classList.contains("collapse"));
+            const cells = Array.from(
+              document.querySelectorAll(".stage .board .cell")
+            )
+              .filter(
+                cell => cell.classList.contains("painted") &&
+                  !cell.classList.contains("collapse")
+              );
             if(cells.length === 0){
               setTimeout(() => that.playGame(), 1000);
               return;
