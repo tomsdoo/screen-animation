@@ -375,7 +375,8 @@ export default Vue.extend({
           });
         });
         that.cells = ncells;
-        if(that.proceeding && !isGameOver){
+        if(!that.proceeding){return;}
+        if(!isGameOver){
           setTimeout(tempf,3);
         }else{
           let interval = 25;
