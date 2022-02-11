@@ -251,8 +251,7 @@ export default Vue.extend({
     boardh:30,
     wh:2,
     cells:[],
-    tetriminos:[],
-    bcontinue:true
+    tetriminos:[]
   };},
   computed:{
     boardwidth(){return this.wh * this.boardw + "vmin";},
@@ -375,7 +374,7 @@ export default Vue.extend({
           });
         });
         that.cells = ncells;
-        if(that.bcontinue && !isGameOver){
+        if(that.proceeding && !isGameOver){
           setTimeout(function(){tempf();},3);
         }else{
           let interval = 25;
