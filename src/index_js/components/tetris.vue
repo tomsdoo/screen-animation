@@ -50,6 +50,18 @@ class Tetrimino {
   public changeDegree(){
     this.degree = (this.degree + 90) % 360;
   }
+  public addX(delta: number){
+    this.x += delta;
+    return this;
+  }
+  public addY(delta: number){
+    this.y += delta;
+    return this;
+  }
+  public die(){
+    this.active = false;
+    return this;
+  }
   abstract getCells(): { x: number; y: number; }[]
 }
 
@@ -73,6 +85,9 @@ class Tetrimino_I extends Tetrimino {
       ]
     }[this.degree % 180];
   }
+  public static getChar(){
+    return "i";
+  }
 }
 
 class Tetrimino_O extends Tetrimino {
@@ -86,6 +101,9 @@ class Tetrimino_O extends Tetrimino {
       { x: this.x, y: this.y + 1 },
       { x: this.x + 1, y: this.y + 1 }
     ];
+  }
+  public static getChar(){
+    return "o";
   }
 }
 
@@ -109,6 +127,9 @@ class Tetrimino_S extends Tetrimino {
       ]
     }[this.degree % 180];
   }
+  public static getChar(){
+    return "s";
+  }
 }
 
 class Tetrimino_Z extends Tetrimino {
@@ -130,6 +151,9 @@ class Tetrimino_Z extends Tetrimino {
         { x: this.x - 1, y: this.y + 2 }
       ]
     }[this.degree % 180];
+  }
+  public static getChar(){
+    return "z";
   }
 }
 
@@ -165,6 +189,9 @@ class Tetrimino_J extends Tetrimino {
       ]
     }[this.degree];
   }
+  public static getChar(){
+    return "j";
+  }
 }
 
 class Tetrimino_L extends Tetrimino {
@@ -199,6 +226,9 @@ class Tetrimino_L extends Tetrimino {
       ]
     }[this.degree];
   }
+  public static getChar(){
+    return "l";
+  }
 }
 
 class Tetrimino_T extends Tetrimino {
@@ -232,6 +262,9 @@ class Tetrimino_T extends Tetrimino {
         { x: this.x - 1, y: this.y + 1 }
       ]
     }[this.degree];
+  }
+  public static getChar(){
+    return "t";
   }
 }
 
@@ -276,42 +309,20 @@ export default Vue.extend({
   },
   methods:{
     addTetrimino(){
-      const tetriminoClasses = [
-        {
-          classConstructor: Tetrimino_I,
-          color: this.colors.i
-        },
-        {
-          classConstructor: Tetrimino_O,
-          color: this.colors.o
-        },
-        {
-          classConstructor: Tetrimino_S,
-          color: this.colors.s
-        },
-        {
-          classConstructor: Tetrimino_Z,
-          color: this.colors.z
-        },
-        {
-          classConstructor: Tetrimino_J,
-          color: this.colors.j
-        },
-        {
-          classConstructor: Tetrimino_L,
-          color: this.colors.l
-        },
-        {
-          classConstructor: Tetrimino_T,
-          color: this.colors.t
-        }
-      ];
-      const myClass = tetriminoClasses[
-        Rand.number(tetriminoClasses.length)
-      ];
+      const myClass = Rand.choose<any>([
+        Tetrimino_I,
+        Tetrimino_O,
+        Tetrimino_S,
+        Tetrimino_Z,
+        Tetrimino_J,
+        Tetrimino_L,
+        Tetrimino_T
+      ]);
       this.tetriminos.push(
-        new myClass.classConstructor(
-          Rand.number(this.boardw - 2)+1, 0, myClass.color
+        new myClass(
+          Rand.number(this.boardw - 2) + 1,
+          0,
+          this.colors[myClass.getChar()]
         )
       );
     },
@@ -331,40 +342,42 @@ export default Vue.extend({
 
         const occupied = new Occupied(currentcells);
         let isGameOver = false;
-        that.tetriminos.filter(function(tetrimino){return tetrimino.active;}).map(function(tetrimino){
+        that.tetriminos.filter(tetrimino => tetrimino.active).map(tetrimino => {
           Rand.number(10) === 0 && tetrimino.changeDegree();
 
-          if(Rand.number(10) === 0 && tetrimino.x + 2 < that.boardw){
-            tetrimino.x += 1;
-            if(occupied.includes(tetrimino.getCells())){
-              tetrimino.x -= 1;
-            }
+          if(
+            Rand.number(10) === 0 &&
+            tetrimino.x + 2 < that.boardw
+          ){
+            tetrimino.addX(1);
+            occupied.includes(tetrimino.getCells()) &&
+              tetrimino.addX(-1);
           }else if(Rand.number(10) === 0 && tetrimino.x > 2){
-            tetrimino.x -= 1;
-            if(occupied.includes(tetrimino.getCells())){
-              tetrimino.x += 1;
-            }
+            tetrimino.addX(-1);
+            occupied.includes(tetrimino.getCells()) &&
+              tetrimino.addX(1);
           }
 
-          tetrimino.y += 1;
-          if(occupied.includes(tetrimino.getCells())){
-            tetrimino.active = false;
-            tetrimino.y -= 1;
-          }
-          const maxy = tetrimino.getCells().sort(function(a,b){return b.y - a.y;})[0].y;
-          if(maxy >= that.boardh - 1){
-            tetrimino.active = false;
-          }
-          if(!tetrimino.active && maxy <= 1){
-            isGameOver = true;
-          }
+          tetrimino.addY(1);
+          occupied.includes(tetrimino.getCells()) &&
+            tetrimino.die() &&
+            tetrimino.addY(-1);
+
+          const maxy = tetrimino.getCells()
+            .sort((a,b) => b.y - a.y)[0].y;
+          maxy >= that.boardh - 1 && tetrimino.die();
+
+          !tetrimino.active && maxy <= 1 &&
+              (() => {isGameOver = true;}).call();
         });
-        if(that.tetriminos.filter(tetrimino => tetrimino.active).length === 0){
+
+        !that.tetriminos.find(tetrimino => tetrimino.active) &&
           that.addTetrimino();
-        }
-        const ncells = Serial.number(that.boardw * that.boardh).map(() => ({
-          color: "transparent"
-        }));
+
+        const ncells = Serial.number(that.boardw * that.boardh)
+          .map(() => ({
+            color: "transparent"
+          }));
         that.tetriminos.forEach(tetrimino => {
           tetrimino.getCells().forEach(cell => {
             const idx = cell.y * that.boardw + cell.x;
@@ -374,25 +387,31 @@ export default Vue.extend({
           });
         });
         that.cells = ncells;
-        if(that.proceeding && !isGameOver){
-          setTimeout(function(){tempf();},3);
+        if(!that.proceeding){return;}
+        if(!isGameOver){
+          setTimeout(tempf,3);
         }else{
           let interval = 25;
           setTimeout(() => {interval = 10;}, 300);
           setTimeout(() => {interval = 5;}, 800);
           setTimeout(() => {interval = 2;}, 1200);
           (function tempf(){
-            const cells = Array.from(document.querySelectorAll(".stage .board .cell"))
-              .filter(cell => cell.classList.contains("painted") && !cell.classList.contains("collapse"));
+            const cells = Array.from(
+              document.querySelectorAll(".stage .board .cell")
+            )
+              .filter(
+                cell => cell.classList.contains("painted") &&
+                  !cell.classList.contains("collapse")
+              );
             if(cells.length === 0){
-              setTimeout(() => that.playGame(), 1000);
+              setTimeout(() => this.playGame(), 1000);
               return;
             }
             Serial.number(Rand.number(10)).forEach(i => {
               cells[Rand.number(cells.length)].classList.add("collapse");
             });
-            setTimeout(() => tempf(), interval);
-          })();
+            setTimeout(() => tempf.call(this), interval);
+          }).call(that);
           that.$emit("fin");
         }
       })();
