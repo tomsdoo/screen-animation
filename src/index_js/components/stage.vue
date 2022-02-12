@@ -17,6 +17,7 @@ import VueMessage from "./message.vue";
 import VuePuzzle from "./puzzle.vue";
 import VueSea from "./sea.vue";
 import VueRails from "./rails.vue";
+import VueSky from "./sky.vue";
 import VueSpace from "./space.vue";
 import VueSparkler from "./sparkler.vue";
 import VueStar from "./star.vue";
@@ -31,6 +32,7 @@ export default Vue.extend({
     VuePuzzle,
     VueRails,
     VueSea,
+    VueSky,
     VueSpace,
     VueSparkler,
     VueStar,
@@ -56,6 +58,7 @@ export default Vue.extend({
         puzzle: "vue-puzzle",
         rails: "vue-rails",
         sea: "vue-sea",
+        sky: "vue-sky",
         space: "vue-space",
         sparkler: "vue-sparkler",
         star: "vue-star",
