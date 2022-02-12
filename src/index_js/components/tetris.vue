@@ -309,7 +309,7 @@ export default Vue.extend({
   },
   methods:{
     addTetrimino(){
-      const tetriminoClasses = [
+      const myClass = Rand.choose<any>([
         Tetrimino_I,
         Tetrimino_O,
         Tetrimino_S,
@@ -317,11 +317,7 @@ export default Vue.extend({
         Tetrimino_J,
         Tetrimino_L,
         Tetrimino_T
-      ];
-
-      const myClass = tetriminoClasses[
-        Rand.number(tetriminoClasses.length)
-      ];
+      ]);
       this.tetriminos.push(
         new myClass(
           Rand.number(this.boardw - 2) + 1,
