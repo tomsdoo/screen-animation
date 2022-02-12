@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="dist/js/index.js"></script>
   <script>
     const definitions = {
@@ -82,7 +83,8 @@
             }));
           const button = li.appendChild(createTag("button", {
             type: "button",
-            class: "button"
+            class: "button",
+            "data-first-char": key.slice(0, 1).toUpperCase()
           }));
         button.innerHTML = key;
         button.addEventListener("click", value);
@@ -112,9 +114,36 @@
     height: 10rem;
     border: 1px solid #cccccc;
     cursor: pointer;
+    position: relative;
+    font-size: 2rem;
   }
   .button-list-item .button:hover {
     background: #dddddd;
+  }
+  .button-list-item .button::before {
+    content: attr(data-first-char);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: rgba(0,0,0,0.1);
+  }
+  @media screen and (max-width: 600px) {
+    .wrapper {
+      background: unset;
+      padding: 0;
+    }
+    .button-list {
+      grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+    }
+    .button-list-item .button {
+      font-size: 1.4rem;
+    }
   }
   </style>
 </head>
