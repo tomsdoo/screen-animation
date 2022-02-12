@@ -41,7 +41,8 @@ module.exports = {
     }
   },
   entry:{
-    index: "./src/index_js/use-index.ts"
+    index: "./src/index_js/use-index.ts",
+    avalanche: "./src/avalanche_js/use-index.ts"
   },
   output:{
     path:path.join(__dirname, "dist/js"),

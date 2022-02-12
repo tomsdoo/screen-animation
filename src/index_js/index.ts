@@ -48,3 +48,7 @@ export function start(
     }
   };
 }
+
+export const Avalanche = {
+  start: (options?: any) => start("avalanche", options)
+};
