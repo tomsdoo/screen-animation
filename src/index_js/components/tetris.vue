@@ -85,6 +85,9 @@ class Tetrimino_I extends Tetrimino {
       ]
     }[this.degree % 180];
   }
+  public static getChar(){
+    return "i";
+  }
 }
 
 class Tetrimino_O extends Tetrimino {
@@ -98,6 +101,9 @@ class Tetrimino_O extends Tetrimino {
       { x: this.x, y: this.y + 1 },
       { x: this.x + 1, y: this.y + 1 }
     ];
+  }
+  public static getChar(){
+    return "o";
   }
 }
 
@@ -121,6 +127,9 @@ class Tetrimino_S extends Tetrimino {
       ]
     }[this.degree % 180];
   }
+  public static getChar(){
+    return "s";
+  }
 }
 
 class Tetrimino_Z extends Tetrimino {
@@ -142,6 +151,9 @@ class Tetrimino_Z extends Tetrimino {
         { x: this.x - 1, y: this.y + 2 }
       ]
     }[this.degree % 180];
+  }
+  public static getChar(){
+    return "z";
   }
 }
 
@@ -177,6 +189,9 @@ class Tetrimino_J extends Tetrimino {
       ]
     }[this.degree];
   }
+  public static getChar(){
+    return "j";
+  }
 }
 
 class Tetrimino_L extends Tetrimino {
@@ -211,6 +226,9 @@ class Tetrimino_L extends Tetrimino {
       ]
     }[this.degree];
   }
+  public static getChar(){
+    return "l";
+  }
 }
 
 class Tetrimino_T extends Tetrimino {
@@ -244,6 +262,9 @@ class Tetrimino_T extends Tetrimino {
         { x: this.x - 1, y: this.y + 1 }
       ]
     }[this.degree];
+  }
+  public static getChar(){
+    return "t";
   }
 }
 
@@ -289,43 +310,23 @@ export default Vue.extend({
   methods:{
     addTetrimino(){
       const tetriminoClasses = [
-        {
-          classConstructor: Tetrimino_I,
-          color: this.colors.i
-        },
-        {
-          classConstructor: Tetrimino_O,
-          color: this.colors.o
-        },
-        {
-          classConstructor: Tetrimino_S,
-          color: this.colors.s
-        },
-        {
-          classConstructor: Tetrimino_Z,
-          color: this.colors.z
-        },
-        {
-          classConstructor: Tetrimino_J,
-          color: this.colors.j
-        },
-        {
-          classConstructor: Tetrimino_L,
-          color: this.colors.l
-        },
-        {
-          classConstructor: Tetrimino_T,
-          color: this.colors.t
-        }
+        Tetrimino_I,
+        Tetrimino_O,
+        Tetrimino_S,
+        Tetrimino_Z,
+        Tetrimino_J,
+        Tetrimino_L,
+        Tetrimino_T
       ];
+
       const myClass = tetriminoClasses[
         Rand.number(tetriminoClasses.length)
       ];
       this.tetriminos.push(
-        new myClass.classConstructor(
-          Rand.number(this.boardw - 2)+1,
+        new myClass(
+          Rand.number(this.boardw - 2) + 1,
           0,
-          myClass.color
+          this.colors[myClass.getChar()]
         )
       );
     },
