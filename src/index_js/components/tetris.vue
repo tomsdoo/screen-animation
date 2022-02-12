@@ -52,9 +52,15 @@ class Tetrimino {
   }
   public addX(delta: number){
     this.x += delta;
+    return this;
   }
   public addY(delta: number){
     this.y += delta;
+    return this;
+  }
+  public die(){
+    this.active = false;
+    return this;
   }
   abstract getCells(): { x: number; y: number; }[]
 }
@@ -356,15 +362,14 @@ export default Vue.extend({
           }
 
           tetrimino.addY(1);
-          if(occupied.includes(tetrimino.getCells())){
-            tetrimino.active = false;
+          occupied.includes(tetrimino.getCells()) &&
+            tetrimino.die() &&
             tetrimino.addY(-1);
-          }
+
           const maxy = tetrimino.getCells()
             .sort((a,b) => b.y - a.y)[0].y;
-          if(maxy >= that.boardh - 1){
-            tetrimino.active = false;
-          }
+          maxy >= that.boardh - 1 && tetrimino.die();
+
           !tetrimino.active && maxy <= 1 &&
               (() => {isGameOver = true;}).call();
         });
