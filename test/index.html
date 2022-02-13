@@ -26,7 +26,7 @@
         backgroundColor: "rgba(0,0,0,0.8)"
       }),
       life: () => {
-        const animation = ScreenAnimation.start("life", {
+        const animation = ScreenAnimation.Life.start({
           color: "#77bb99",
           backgroundColor: "rgba(0,0,0,0.6)",
           closeOnClick: false
@@ -36,7 +36,7 @@
           animation.end();
         });
       },
-      line: () => ScreenAnimation.start("line", {
+      line: () => ScreenAnimation.Line.start({
         color: "#5588cc",
         backgroundColor: "rgba(0,0,0,0.8)"
       }),

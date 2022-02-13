@@ -56,3 +56,7 @@ export const Avalanche = {
 export const Life = {
   start: (options?: any) => start("life", options)
 };
+
+export const Line = {
+  start: (options?: any) => start("line", options)
+};

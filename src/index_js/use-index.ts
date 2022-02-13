@@ -1,6 +1,7 @@
 import {
   Avalanche,
   Life,
+  Line,
   start
 } from "./index";
 
@@ -13,6 +14,9 @@ declare global {
       },
       Life?: {
         start: Function;
+      },
+      Line?: {
+        start: Function;
       }
     }
   }
@@ -20,5 +24,7 @@ declare global {
 
 window.ScreenAnimation = {
   Avalanche,
+  Life,
+  Line,
   start
 };
