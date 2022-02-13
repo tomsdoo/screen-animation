@@ -1,5 +1,6 @@
 import {
   Avalanche,
+  Life,
   start
 } from "./index";
 
@@ -8,6 +9,9 @@ declare global {
     ScreenAnimation: {
       start: Function;
       Avalanche?: {
+        start: Function;
+      },
+      Life?: {
         start: Function;
       }
     }
