@@ -52,3 +52,7 @@ export function start(
 export const Avalanche = {
   start: (options?: any) => start("avalanche", options)
 };
+
+export const Life = {
+  start: (options?: any) => start("life", options)
+};
