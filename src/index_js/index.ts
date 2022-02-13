@@ -60,3 +60,7 @@ export const Life = {
 export const Line = {
   start: (options?: any) => start("line", options)
 };
+
+export const Message = {
+  start: (options?: any) => start("message", options)
+};
