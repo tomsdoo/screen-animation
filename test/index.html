@@ -9,22 +9,6 @@
         color: "#ff7722",
         backgroundColor: "rgba(255,255,255,0.8)"
       }),
-      tetris: () => ScreenAnimation.start("tetris", {
-        colors: {
-          i: "#bbccee",
-          o: "#448866",
-          s: "#ffbbdd",
-          z: "#6644cc",
-          j: "#7799ee",
-          l: "#aabb33",
-          t: "#229944"
-        },
-        backgroundColor: "rgba(0,0,0,0.4)"
-      }),
-      space: () => ScreenAnimation.start("space"),
-      star: () => ScreenAnimation.start("star", {
-        backgroundColor: "rgba(0,0,0,0.8)"
-      }),
       life: () => {
         const animation = ScreenAnimation.Life.start({
           color: "#77bb99",
@@ -55,9 +39,25 @@
         color: "#993388",
         backgroundColor: "rgba(0,0,0,0.5)"
       }),
-      sparkler: () => ScreenAnimation.start("sparkler"),
       sea: () => ScreenAnimation.start("sea"),
-      sky: () => ScreenAnimation.start("sky")
+      sky: () => ScreenAnimation.start("sky"),
+      space: () => ScreenAnimation.start("space"),
+      sparkler: () => ScreenAnimation.start("sparkler"),
+      star: () => ScreenAnimation.start("star", {
+        backgroundColor: "rgba(0,0,0,0.8)"
+      }),
+      tetris: () => ScreenAnimation.start("tetris", {
+        colors: {
+          i: "#bbccee",
+          o: "#448866",
+          s: "#ffbbdd",
+          z: "#6644cc",
+          j: "#7799ee",
+          l: "#aabb33",
+          t: "#229944"
+        },
+        backgroundColor: "rgba(0,0,0,0.4)"
+      })
     };
 
     window.addEventListener("load", () => {
