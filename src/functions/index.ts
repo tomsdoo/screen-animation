@@ -13,16 +13,15 @@ export function generateStart(ProvidedVue: Vue){
     }));
 
     // @ts-ignore
-    const vue = new ProvidedVue()
-      .$mount(div.appendChild(Tags.div()));
-    const innerOptions = {
+    const vue = new ProvidedVue();
+    vue.options = {
       closeOnClick: true,
       ...(options ? options : {})
     };
 
-    vue.options = innerOptions;
+    vue.$mount(div.appendChild(Tags.div()));
 
-    if(innerOptions.closeOnClick){
+    if(vue.options.closeOnClick){
       div.addEventListener("click", () => {
         vue.end();
         div.innerHTML = "";

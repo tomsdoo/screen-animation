@@ -26,8 +26,8 @@ export function start(
     ...(options ? options : {})
   };
 
-  vue.name = name;
   vue.options = innerOptions;
+  vue.name = name;
 
   if(innerOptions.closeOnClick){
     div.addEventListener("click", () => {
@@ -59,4 +59,8 @@ export const Life = {
 
 export const Line = {
   start: (options?: any) => start("line", options)
+};
+
+export const Message = {
+  start: (options?: any) => start("message", options)
 };
