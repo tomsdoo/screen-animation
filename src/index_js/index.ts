@@ -68,3 +68,7 @@ export const Message = {
 export const Puzzle = {
   start: (options?: any) => start("puzzle", options)
 };
+
+export const Rails = {
+  start: (options?: any) => start("rails", options)
+};
