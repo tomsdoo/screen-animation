@@ -3,6 +3,7 @@ import {
   Life,
   Line,
   Message,
+  Puzzle,
   start
 } from "./index";
 
@@ -21,6 +22,9 @@ declare global {
       },
       Message?: {
         start: Function;
+      },
+      Puzzle?: {
+        start: Function;
       }
     }
   }
@@ -31,5 +35,6 @@ window.ScreenAnimation = {
   Life,
   Line,
   Message,
+  Puzzle,
   start
 };

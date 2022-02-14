@@ -45,7 +45,8 @@ module.exports = {
     "screen-animation-avalanche": "./src/avalanche_js/use-index.ts",
     "screen-animation-life": "./src/life_js/use-index.ts",
     "screen-animation-line": "./src/line_js/use-index.ts",
-    "screen-animation-message": "./src/message_js/use-index.ts"
+    "screen-animation-message": "./src/message_js/use-index.ts",
+    "screen-animation-puzzle": "./src/puzzle_js/use-index.ts"
   },
   output:{
     path:path.join(__dirname, "dist/js"),
