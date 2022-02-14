@@ -26,8 +26,8 @@ export function start(
     ...(options ? options : {})
   };
 
-  vue.name = name;
   vue.options = innerOptions;
+  vue.name = name;
 
   if(innerOptions.closeOnClick){
     div.addEventListener("click", () => {
