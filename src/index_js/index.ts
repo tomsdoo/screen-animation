@@ -64,3 +64,7 @@ export const Line = {
 export const Message = {
   start: (options?: any) => start("message", options)
 };
+
+export const Puzzle = {
+  start: (options?: any) => start("puzzle", options)
+};
