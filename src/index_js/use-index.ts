@@ -4,6 +4,7 @@ import {
   Line,
   Message,
   Puzzle,
+  Rails,
   start
 } from "./index";
 
@@ -25,6 +26,9 @@ declare global {
       },
       Puzzle?: {
         start: Function;
+      },
+      Rails?: {
+        start: Function;
       }
     }
   }
@@ -36,5 +40,6 @@ window.ScreenAnimation = {
   Line,
   Message,
   Puzzle,
+  Rails,
   start
 };
