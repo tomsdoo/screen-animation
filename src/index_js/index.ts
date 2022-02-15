@@ -72,3 +72,7 @@ export const Puzzle = {
 export const Rails = {
   start: (options?: any) => start("rails", options)
 };
+
+export const Sea = {
+  start: (options?: any) => start("sea", options)
+};
