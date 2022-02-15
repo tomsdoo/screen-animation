@@ -5,6 +5,7 @@ import {
   Message,
   Puzzle,
   Rails,
+  Sea,
   start
 } from "./index";
 
@@ -29,6 +30,9 @@ declare global {
       },
       Rails?: {
         start: Function;
+      },
+      Sea?: {
+        start: Function;
       }
     }
   }
@@ -41,5 +45,6 @@ window.ScreenAnimation = {
   Message,
   Puzzle,
   Rails,
+  Sea,
   start
 };
