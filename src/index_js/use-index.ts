@@ -6,6 +6,7 @@ import {
   Puzzle,
   Rails,
   Sea,
+  Sky,
   start
 } from "./index";
 
@@ -33,6 +34,9 @@ declare global {
       },
       Sea?: {
         start: Function;
+      },
+      Sky?: {
+        start: Function;
       }
     }
   }
@@ -46,5 +50,6 @@ window.ScreenAnimation = {
   Puzzle,
   Rails,
   Sea,
+  Sky,
   start
 };
