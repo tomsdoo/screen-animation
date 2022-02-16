@@ -76,3 +76,7 @@ export const Rails = {
 export const Sea = {
   start: (options?: any) => start("sea", options)
 };
+
+export const Sky = {
+  start: (options?: any) => start("sky", options)
+};

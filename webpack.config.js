@@ -48,7 +48,8 @@ module.exports = {
     "screen-animation-message": "./src/message_js/use-index.ts",
     "screen-animation-puzzle": "./src/puzzle_js/use-index.ts",
     "screen-animation-rails": "./src/rails_js/use-index.ts",
-    "screen-animation-sea": "./src/sea_js/use-index.ts"
+    "screen-animation-sea": "./src/sea_js/use-index.ts",
+    "screen-animation-sky": "./src/sky_js/use-index.ts"
   },
   output:{
     path:path.join(__dirname, "dist/js"),
