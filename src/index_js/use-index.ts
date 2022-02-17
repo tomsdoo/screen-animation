@@ -7,6 +7,7 @@ import {
   Rails,
   Sea,
   Sky,
+  Space,
   start
 } from "./index";
 
@@ -37,6 +38,9 @@ declare global {
       },
       Sky?: {
         start: Function;
+      },
+      Space?: {
+        start: Function;
       }
     }
   }
@@ -51,5 +55,6 @@ window.ScreenAnimation = {
   Rails,
   Sea,
   Sky,
+  Space,
   start
 };

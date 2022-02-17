@@ -80,3 +80,7 @@ export const Sea = {
 export const Sky = {
   start: (options?: any) => start("sky", options)
 };
+
+export const Space = {
+  start: (options?: any) => start("space", options)
+};
