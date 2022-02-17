@@ -1,6 +1,6 @@
 <template>
   <div class="screen-animation">
-    <vue-rails
+    <vue-space
       :proceeding="proceeding"
       :options="options"
     />
@@ -9,11 +9,11 @@
 
 <script lang="ts">
 import Vue from "vue";
-import VueRails from "../../index_js/components/space.vue";
+import VueSpace from "../../index_js/components/space.vue";
 
 export default Vue.extend({
   components: {
-    VueRails
+    VueSpace
   },
   props: {
     options: {
