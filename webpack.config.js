@@ -50,7 +50,8 @@ module.exports = {
     "screen-animation-rails": "./src/rails_js/use-index.ts",
     "screen-animation-sea": "./src/sea_js/use-index.ts",
     "screen-animation-sky": "./src/sky_js/use-index.ts",
-    "screen-animation-space": "./src/space_js/use-index.ts"
+    "screen-animation-space": "./src/space_js/use-index.ts",
+    "screen-animation-sparkler": "./src/sparkler_js/use-index.ts"
   },
   output:{
     path:path.join(__dirname, "dist/js"),
