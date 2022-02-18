@@ -51,7 +51,8 @@ module.exports = {
     "screen-animation-sea": "./src/sea_js/use-index.ts",
     "screen-animation-sky": "./src/sky_js/use-index.ts",
     "screen-animation-space": "./src/space_js/use-index.ts",
-    "screen-animation-sparkler": "./src/sparkler_js/use-index.ts"
+    "screen-animation-sparkler": "./src/sparkler_js/use-index.ts",
+    "screen-animation-star": "./src/star_js/use-index.ts"
   },
   output:{
     path:path.join(__dirname, "dist/js"),

@@ -88,3 +88,7 @@ export const Space = {
 export const Sparkler = {
   start: (options?: any) => start("sparkler", options)
 };
+
+export const Star = {
+  start: (options?: any) => start("star", options)
+};
