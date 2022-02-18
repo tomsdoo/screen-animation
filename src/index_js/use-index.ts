@@ -9,6 +9,7 @@ import {
   Sky,
   Space,
   Sparkler,
+  Star,
   start
 } from "./index";
 
@@ -45,6 +46,9 @@ declare global {
       },
       Sparkler?: {
         start: Function;
+      },
+      Star?: {
+        start: Function;
       }
     }
   }
@@ -61,5 +65,6 @@ window.ScreenAnimation = {
   Sky,
   Space,
   Sparkler,
+  Star,
   start
 };
