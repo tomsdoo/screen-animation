@@ -84,3 +84,7 @@ export const Sky = {
 export const Space = {
   start: (options?: any) => start("space", options)
 };
+
+export const Sparkler = {
+  start: (options?: any) => start("sparkler", options)
+};
