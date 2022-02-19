@@ -1,5 +1,7 @@
 # screen-animation
 
+![npm](https://img.shields.io/npm/v/screen-animation)
+
 It's a package what provides the JavaScript files for screen animations.
 
 ## Usage
