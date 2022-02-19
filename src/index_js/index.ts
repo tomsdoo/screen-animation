@@ -92,3 +92,7 @@ export const Sparkler = {
 export const Star = {
   start: (options?: any) => start("star", options)
 };
+
+export const Tetris = {
+  start: (options?: any) => start("tetris", options)
+};
