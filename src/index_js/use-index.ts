@@ -10,6 +10,7 @@ import {
   Space,
   Sparkler,
   Star,
+  Tetris,
   start
 } from "./index";
 
@@ -49,6 +50,9 @@ declare global {
       },
       Star?: {
         start: Function;
+      },
+      Tetris?: {
+        start: Function;
       }
     }
   }
@@ -66,5 +70,6 @@ window.ScreenAnimation = {
   Space,
   Sparkler,
   Star,
+  Tetris,
   start
 };
