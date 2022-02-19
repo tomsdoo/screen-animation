@@ -1,13 +1,15 @@
 {
   "name": "screen-animation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "It provides some screen animation on your page.",
   "main": "dist/js/screen-animation.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "test": "exit 0"
   },
-  "keywords": [ "animation" ],
+  "keywords": [
+    "animation"
+  ],
   "author": "tom",
   "license": "MIT",
   "devDependencies": {
