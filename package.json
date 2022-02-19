@@ -7,6 +7,10 @@
     "build": "webpack --config webpack.config.js",
     "test": "exit 0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomsdoo/screen-animation.git"
+  },
   "keywords": [
     "animation"
   ],
