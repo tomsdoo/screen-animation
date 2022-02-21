@@ -18,8 +18,7 @@ export function start(
     div.style[key] = value;
   });
 
-  const vue = new Vue({
-  }).$mount(div.appendChild(document.createElement("div")));
+  const vue = new Vue({});
 
   const innerOptions = {
     closeOnClick: true,
@@ -36,6 +35,9 @@ export function start(
       div.style.display = "none";
     });
   }
+
+  vue.$mount(div.appendChild(document.createElement("div")));
+
   return {
     addEventListener(eventName: string, handler: Function){
       // @ts-ignore
@@ -51,6 +53,10 @@ export function start(
 
 export const Avalanche = {
   start: (options?: any) => start("avalanche", options)
+};
+
+export const Circle = {
+  start: (options?: any) => start("circle", options)
 };
 
 export const Life = {

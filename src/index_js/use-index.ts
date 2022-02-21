@@ -1,5 +1,6 @@
 import {
   Avalanche,
+  Circle,
   Life,
   Line,
   Message,
@@ -19,6 +20,9 @@ declare global {
     ScreenAnimation: {
       start: Function;
       Avalanche?: {
+        start: Function;
+      },
+      Circle?: {
         start: Function;
       },
       Life?: {
@@ -60,6 +64,7 @@ declare global {
 
 window.ScreenAnimation = {
   Avalanche,
+  Circle,
   Life,
   Line,
   Message,
