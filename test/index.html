@@ -9,6 +9,13 @@
         color: "#ff7722",
         backgroundColor: "rgba(255,255,255,0.8)"
       }),
+      circle: () => ScreenAnimation.Circle.start({
+        backgroundColor: "#333333",
+        colors: [
+          "red",
+          "yellow"
+        ]
+      }),
       life: () => {
         const animation = ScreenAnimation.Life.start({
           color: "#77bb99",
