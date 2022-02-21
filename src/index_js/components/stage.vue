@@ -11,6 +11,7 @@
 <script lang="ts">
 import Vue from "vue";
 import VueAvalanche from "./avalanche.vue";
+import VueCircle from "./circle.vue";
 import VueLife from "./life.vue";
 import VueLine from "./line.vue";
 import VueMessage from "./message.vue";
@@ -26,6 +27,7 @@ import VueTetris from "./tetris.vue";
 export default Vue.extend({
   components: {
     VueAvalanche,
+    VueCircle,
     VueLife,
     VueLine,
     VueMessage,
@@ -52,6 +54,7 @@ export default Vue.extend({
     vueName(){
       return {
         avalanche: "vue-avalanche",
+        circle: "vue-circle",
         life: "vue-life",
         line: "vue-line",
         message: "vue-message",
