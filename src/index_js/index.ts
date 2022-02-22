@@ -55,10 +55,6 @@ export const Avalanche = {
   start: (options?: any) => start("avalanche", options)
 };
 
-export const Circle = {
-  start: (options?: any) => start("circle", options)
-};
-
 export const Life = {
   start: (options?: any) => start("life", options)
 };
@@ -93,6 +89,10 @@ export const Space = {
 
 export const Sparkler = {
   start: (options?: any) => start("sparkler", options)
+};
+
+export const Spinner = {
+  start: (options?: any) => start("spinner", options)
 };
 
 export const Star = {

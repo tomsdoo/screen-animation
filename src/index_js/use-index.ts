@@ -1,6 +1,5 @@
 import {
   Avalanche,
-  Circle,
   Life,
   Line,
   Message,
@@ -10,6 +9,7 @@ import {
   Sky,
   Space,
   Sparkler,
+  Spinner,
   Star,
   Tetris,
   start
@@ -20,9 +20,6 @@ declare global {
     ScreenAnimation: {
       start: Function;
       Avalanche?: {
-        start: Function;
-      },
-      Circle?: {
         start: Function;
       },
       Life?: {
@@ -52,6 +49,9 @@ declare global {
       Sparkler?: {
         start: Function;
       },
+      Spinner?: {
+        start: Function;
+      },
       Star?: {
         start: Function;
       },
@@ -64,7 +64,6 @@ declare global {
 
 window.ScreenAnimation = {
   Avalanche,
-  Circle,
   Life,
   Line,
   Message,
@@ -74,6 +73,7 @@ window.ScreenAnimation = {
   Sky,
   Space,
   Sparkler,
+  Spinner,
   Star,
   Tetris,
   start
