@@ -25,7 +25,16 @@
           }"
         ></div>
       </div>
-      <div class="message">{{ message }}</div>
+      <div
+        class="message"
+        :style="{
+          color: messageColor,
+          fontSize: messageFontSize,
+          fontFamily: messageFontFamily
+        }"
+      >
+        {{ message }}
+      </div>
     </div>
   </div>
 </template>
@@ -53,6 +62,12 @@ export default Vue.extend({
     },
     messageColor(){
       return this.options.message && this.options.message.color || this.lastColor;
+    },
+    messageFontSize(){
+      return this.options.message && this.options.message.fontSize || "1rem";
+    },
+    messageFontFamily(){
+      return this.options.message && this.options.message.fontFamily || "inherit";
     },
     innerColors(){
       return this.options.colors && [
@@ -107,6 +122,7 @@ export default Vue.extend({
     "message" max-content / 1fr;
 }
 .circle-wrapper {
+  grid-area: circle;
   position: relative;
   display: grid;
   justify-content: center;
@@ -124,7 +140,9 @@ export default Vue.extend({
   border-radius: 50%;
 }
 .message {
+  grid-area: message;
   display: none;
+  text-align: center;
 }
 .loading-wrapper.with-message .message {
   display: grid;
