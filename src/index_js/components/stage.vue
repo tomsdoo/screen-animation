@@ -11,7 +11,6 @@
 <script lang="ts">
 import Vue from "vue";
 import VueAvalanche from "./avalanche.vue";
-import VueCircle from "./circle.vue";
 import VueLife from "./life.vue";
 import VueLine from "./line.vue";
 import VueMessage from "./message.vue";
@@ -21,13 +20,13 @@ import VueRails from "./rails.vue";
 import VueSky from "./sky.vue";
 import VueSpace from "./space.vue";
 import VueSparkler from "./sparkler.vue";
+import VueSpinner from "./spinner.vue";
 import VueStar from "./star.vue";
 import VueTetris from "./tetris.vue";
 
 export default Vue.extend({
   components: {
     VueAvalanche,
-    VueCircle,
     VueLife,
     VueLine,
     VueMessage,
@@ -37,6 +36,7 @@ export default Vue.extend({
     VueSky,
     VueSpace,
     VueSparkler,
+    VueSpinner,
     VueStar,
     VueTetris
   },
@@ -54,7 +54,6 @@ export default Vue.extend({
     vueName(){
       return {
         avalanche: "vue-avalanche",
-        circle: "vue-circle",
         life: "vue-life",
         line: "vue-line",
         message: "vue-message",
@@ -64,6 +63,7 @@ export default Vue.extend({
         sky: "vue-sky",
         space: "vue-space",
         sparkler: "vue-sparkler",
+        spinner: "vue-spinner",
         star: "vue-star",
         tetris: "vue-tetris"
       }[this.name];

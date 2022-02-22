@@ -9,21 +9,6 @@
         color: "#ff7722",
         backgroundColor: "rgba(255,255,255,0.8)"
       }),
-      circle: () => ScreenAnimation.Circle.start({
-        backgroundColor: "#333333",
-        colors: [
-          "red",
-          "yellow",
-          "green",
-          "blue"
-        ],
-        message: {
-          text: "loading.....",
-          color: "#fff",
-          fontSize: "3rem",
-          fontFamily: "fantasy"
-        }
-      }),
       life: () => {
         const animation = ScreenAnimation.Life.start({
           color: "#77bb99",
@@ -58,6 +43,21 @@
       sky: () => ScreenAnimation.Sky.start(),
       space: () => ScreenAnimation.Space.start(),
       sparkler: () => ScreenAnimation.Sparkler.start(),
+      spinner: () => ScreenAnimation.Spinner.start({
+        backgroundColor: "#333333",
+        colors: [
+          "red",
+          "yellow",
+          "green",
+          "blue"
+        ],
+        message: {
+          text: "loading.....",
+          color: "#fff",
+          fontSize: "3rem",
+          fontFamily: "fantasy"
+        }
+      }),
       star: () => ScreenAnimation.Star.start({
         backgroundColor: "rgba(0,0,0,0.8)"
       }),

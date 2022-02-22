@@ -52,6 +52,7 @@ module.exports = {
     "screen-animation-sky": "./src/sky_js/use-index.ts",
     "screen-animation-space": "./src/space_js/use-index.ts",
     "screen-animation-sparkler": "./src/sparkler_js/use-index.ts",
+    "screen-animation-spinner": "./src/spinner_js/use-index.ts",
     "screen-animation-star": "./src/star_js/use-index.ts",
     "screen-animation-tetris": "./src/tetris_js/use-index.ts"
   },
