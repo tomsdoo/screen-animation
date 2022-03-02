@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500&display=swap');
+
+body {
+  --main-color: #6666cc;
+  --normal-black: #434343;
+
+  --global-grid-gap: 1rem;
+  --global-header-height: 3rem;
+  --global-footer-height: 2rem;
+
+  display: grid;
+  grid-template:
+    "header" max-content
+    "main  " 1fr
+    "footer" max-content / 1fr;
+  grid-gap: var(--global-grid-gap);
+  min-height: 100vh;
+  color: var(--normal-black);
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+body > header,
+body > footer {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: var(--main-color);
+  color: #eeeeee;
+}
+
+body > footer .footer-link {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template: "text icon" max-content / max-content max-content;
+}
+body > footer .footer-link > .text {
+  grid-area: text;
+}
+body > footer .footer-link > .icon {
+  grid-area: icon;
+  font-size: 1em;
+}
+
+body > header {
+  grid-area: header;
+  height: var(--global-header-height);
+  position: relative;
+}
+body > header > h1 > .logo-link {
+  display: grid;
+  grid-template:
+    "text image" max-content / max-content max-content;
+  grid-gap: 1rem;
+  font-size: 2rem;
+  align-items: center;
+}
+body > header .logo-link .title {
+  grid-area: text;
+}
+body > header .logo-link .image {
+  grid-area: image;
+  height: 1.5rem;
+}
+
+body > footer {
+  grid-area: footer;
+  height: var(--global-footer-height);
+  font-size: 0.8rem;
+}
+
+body > main {
+  grid-area: main;
+  display: grid;
+  grid-template:
+    "content" max-content / 1fr;
+  grid-gap: 1rem;
+  padding: 0 2rem;
+  width: 100%;
+  max-width:min(1100px, 96vw);
+  margin:0 auto;
+  position: relative;
+}
+
+article {
+  grid-area: content;
+}
+
+article {
+  height: calc(
+    100vh
+    - var(--global-header-height)
+    - var(--global-footer-height)
+    - (var(--global-grid-gap) * 2)
+    );
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+article::-webkit-scrollbar {
+  display: none;
+}
+
+.animation-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  grid-gap: 1rem;
+}
+
+.animation-list-item {}
+.animation-button {
+  width: 100%;
+}
+
+article a {
+  color: #99aaff;
+  cursor: pointer;
+}
+article a:hover {
+  text-shadow: 0 0 0.5px;
+}
+
+.animation-image {
+  width:100%;
+  object-fit:cover;
+  filter:grayscale(100%);
+  border: 1px #ddd solid;
+}
+.animation-image:hover {
+  filter:none;
+}
+
+.npm-link-sp {
+  grid-area: npm-link;
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  body > main {
+    grid-area: main;
+    display: grid;
+    grid-template:
+      "content      " 1fr
+      "npm-link     " max-content / 1fr;
+    grid-gap: 1rem;
+    padding: 0;
+    width: 100%;
+    max-width:min(1100px, 96vw);
+    margin:0 auto;
+  }
+
+  body > header > h1 > .logo-link {
+    grid-template:
+      "text" max-content / max-content;
+  }
+  body > header > h1 > .logo-link .image {
+    display: none;
+  }
+
+  article {
+    height: calc(
+      100vh
+      - 2rem - 1rem
+      - 10vw
+      - var(--global-header-height)
+      - var(--global-footer-height)
+      - (var(--global-grid-gap) * 2)
+      );
+    border-top: 1px solid #f6f6f6;
+  }
+
+  .animation-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+  }
+
+  .animation-image {
+    filter:none;
+  }
+
+  .npm-link-sp {
+    display: block;
+    width: 100%;
+  }
+  .npm-link-sp .image {
+    width: 100%;
+  }
+}
