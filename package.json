@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "prepare:docs-js": "npm run build && cp dist/js/screen-animation.js docs/js/",
+    "stage:docs-js": "git add docs/js/screen-animation.js",
     "test": "exit 0"
   },
   "repository": {
