@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>screen-animation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="screen-animation is an npm package that provides the animation javascript.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css/destyle.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="js/screen-animation.js"></script>
+
+    <script>
+      const definitions = {
+        avalanche: () => ScreenAnimation.Avalanche.start({
+          color: "#ff7722",
+          backgroundColor: "rgba(255,255,255,0.8)"
+        }),
+        life: () => {
+          const animation = ScreenAnimation.Life.start({
+            color: "#77bb99",
+            backgroundColor: "rgba(0,0,0,0.8)",
+            closeOnClick: false
+          });
+          animation.addEventListener("click", () => {
+            console.log("ended");
+            animation.end();
+          });
+        },
+        line: () => ScreenAnimation.Line.start({
+          color: "#5588cc",
+          backgroundColor: "rgba(0,0,0,0.9)"
+        }),
+        message: () => ScreenAnimation.Message.start({
+          color: "#7744bb",
+          backgroundColor: "rgba(0,0,0,0.8)",
+          fontFamily: "fantasy",
+          fontSize: "5rem",
+          text: "testing.."
+        }),
+        puzzle: () => ScreenAnimation.Puzzle.start({
+          // color: "#883366",
+          backgroundColor: "rgba(0,0,0,0.8)"
+        }),
+        rails: () => ScreenAnimation.Rails.start({
+          color: "#993388",
+          backgroundColor: "rgba(0,0,0,0.9)"
+        }),
+        sea: () => ScreenAnimation.Sea.start(),
+        sky: () => ScreenAnimation.Sky.start(),
+        space: () => ScreenAnimation.Space.start(),
+        sparkler: () => ScreenAnimation.Sparkler.start(),
+        spinner: () => ScreenAnimation.Spinner.start({
+          backgroundColor: "#333333",
+          colors: [
+            "red",
+            "yellow",
+            "green",
+            "blue"
+          ],
+          message: {
+            text: "loading.....",
+            color: "#fff",
+            fontSize: "3rem",
+            fontFamily: "fantasy"
+          }
+        }),
+        star: () => ScreenAnimation.Star.start({
+          backgroundColor: "rgba(0,0,0,0.8)"
+        }),
+        tetris: () => ScreenAnimation.Tetris.start({
+          colors: {
+            i: "#bbccee",
+            o: "#448866",
+            s: "#ffbbdd",
+            z: "#6644cc",
+            j: "#7799ee",
+            l: "#aabb33",
+            t: "#229944"
+          },
+          backgroundColor: "rgba(0,0,0,0.8)"
+        })
+      };
+
+      function startAnimation(button){
+        const animationName = button.getAttribute("data-animation-name");
+        animationName in definitions && definitions[animationName]();
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a
+          class="logo-link"
+          href="https://www.npmjs.com/package/screen-animation"
+          target="_blank"
+        >
+          <p class="title">screen-animation</p>
+          <img
+            src="https://nodei.co/npm/screen-animation.svg"
+            class="image"
+            alt="screen-animation"
+          />
+        </a>
+      </h1>
+    </header>
+    <main>
+      <article>
+        <ul class="animation-list">
+          <li class="animation-list-item">
+            <button
+              type="button"
+              class="animation-button"
+              onclick="startAnimation(this)"
+              data-animation-name="ANIMATION_NAME"
+            >
+              <img
+                src="IMAGE_URL"
+                class="animation-image"
+              />
+            </button>
+          </li>
+        </ul>
+        <script>
+          const listItemHtml = document.querySelector(".animation-list").innerHTML;
+          document.querySelector(".animation-list").innerHTML = [
+            "avalanche",
+            "life",
+            "line",
+            "message",
+            "puzzle",
+            "rails",
+            "sea",
+            "sky",
+            "space",
+            "sparkler",
+            "spinner",
+            "star",
+            "tetris"
+          ]
+          .map(name => ({
+            name,
+            image: `images/${name}.gif`
+          }))
+          .map(definition => listItemHtml.replace("ANIMATION_NAME", definition.name).replace("IMAGE_URL", definition.image))
+          .join("\n");
+        </script>
+      </article>
+      <a
+        class="npm-link-sp"
+        href="https://www.npmjs.com/package/screen-animation"
+        target="_blank"
+      >
+        <img
+          src="https://nodei.co/npm/screen-animation.svg"
+          class="image"
+          alt="screen-animation"
+        />
+      </a>
+    </main>
+    <footer>
+      <a
+        href="https://www.npmjs.com/package/screen-animation"
+        class="footer-link"
+        target="_blank"
+      >
+        <span class="text">npm screen-animation</span>
+        <span class="material-icons icon">open_in_new</span>
+      </a>
+    </footer>
+  </body>
+</html>
