@@ -1,6 +1,6 @@
 {
   "name": "screen-animation",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "It provides some screen animation on your page.",
   "main": "dist/js/screen-animation.js",
   "scripts": {
