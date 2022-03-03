@@ -6,7 +6,7 @@ It's a package what provides the JavaScript files for screen animations.
 
 ## Usage
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/screen-animation/dist/js/screen-animation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/screen-animation"></script>
 <script>
   onStartAnimation() {
     ScreenAnimation.Sea.start();
