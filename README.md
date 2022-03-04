@@ -91,6 +91,24 @@ ScreenAnimation.Space.start()
 ``` javascript
 ScreenAnimation.Sparkler.start()
 ```
+#### Spinner
+``` javascript
+ScreenAnimation.Spinner.start({
+  backgroundColor: "#333333",
+  colors: [
+    "red",
+    "yellow",
+    "green",
+    "blue"
+  ],
+  message: {
+    text: "loading.....",
+    color: "#ffffff",
+    fontSize: "3rem",
+    fontFamily: "fantasy"
+  }
+})
+```
 
 #### Star
 ``` javascript
